@@ -1,0 +1,44 @@
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #e0feff;
+}
+
+.section-game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.panel {
+  margin-bottom: 2rem;
+}
+
+.panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.panel span.panel-score {
+  font-family: "Roboto", sans-serif;
+  font-size: xx-large;
+  color: #545454;
+  margin-right: 1rem;
+}
+
+.panel .btn-start-game {
+  color: #fff;
+  background: #8bbabb;
+  border-color: #8bbabb;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: xx-large;
+  -webkit-box-shadow: 0px 10px 20px -6px rgb(0 0 0 / 12%);
+  -moz-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 10px 20px -6px rgb(0 0 0 / 12%);
+}

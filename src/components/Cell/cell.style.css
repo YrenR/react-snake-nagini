@@ -1,0 +1,18 @@
+.board-cell {
+  width: 10px;
+  height: 10px;
+  margin: 0.5px;
+}
+
+.board-cell--snake {
+  background-color: #8bbabb;
+  border-radius: 1px;
+}
+
+.board-cell--food {
+  border-radius: 50%;
+}
+
+.board-cell--head {
+  background-color: #729899;
+}
