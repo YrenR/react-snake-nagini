@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Direction } from "./direction.interface";
 import { ISnake } from "../components/Board/board.interface";
-import { StateGame } from "../pages/app.interface";
+import { StateGame } from "../redux/slices/settingGame.interface";
 
-export default function useDirection(direction: Direction, snake: ISnake, state: StateGame): Direction {
-  const [currentDirection, setCurrentDirection] = useState<Direction>(direction);
+export default function useDirection(snake: ISnake, state: StateGame): Direction {
+  const [currentDirection, setCurrentDirection] = useState<Direction>("left");
 
   useEffect(() => {
     setCurrentDirection("left");

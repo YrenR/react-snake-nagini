@@ -5,6 +5,11 @@ export const sizeBoard = {
 
 export const delayBoard = 100;
 
+export const scorePoints = {
+  move: 1,
+  eatFood: 25,
+};
+
 export const colorFood = [
   "#fac89e",
   "#e3e891",
