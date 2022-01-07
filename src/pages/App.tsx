@@ -4,37 +4,6 @@ import "./App.css";
 import { StateGame } from "./app.interface";
 import { delayBoard, sizeBoard } from "../constants/index";
 
-const Panel = ({
-  state,
-  setStateGame,
-  score,
-}: {
-  state: StateGame;
-  setStateGame: (state: StateGame, score: number) => void;
-  score: number;
-}): JSX.Element => {
-  const getMessage = (): string => {
-    if (state === "start") return "Start Game!";
-    else return "Retry!";
-  };
-
-  return (
-    <div className="panel">
-      <div className="panel-header">
-        <span className="panel-score">Best score: {score}</span>
-        <button className="btn-start-game" onClick={() => setStateGame("play", 0)}>
-          {getMessage()}
-        </button>
-      </div>
-    </div>
-  );
-};
-
-/**
- * Todo:
- * crear fichero de constantes para rowm column, delay
- * @returns
- */
 function App(): JSX.Element {
   const [stateGame, setStateGame] = useState<StateGame>("start");
   const [score, setScore] = useState<number>(0);
@@ -50,6 +19,11 @@ function App(): JSX.Element {
     setScore(scoreGame);
   };
 
+  const getMessage = (): string => {
+    if (stateGame === "start") return "Start Game!";
+    else return "Retry!";
+  };
+
   /**
    * Todo:
    * state={stateGame} y setStateGame, habria que pasarlo de otra forma, Context o algo
@@ -57,8 +31,14 @@ function App(): JSX.Element {
   return (
     <div className="main-container">
       <div className="section-game">
-        {JSON.stringify(stateGame)}
-        <Panel state={stateGame} setStateGame={handlerStateGame} score={score} />
+        <div className="panel">
+          <div className="panel-header">
+            <span className="panel-score">Best score: {score}</span>
+            <button className="btn-start-game" onClick={() => handlerStateGame("play", 0)}>
+              {getMessage()}
+            </button>
+          </div>
+        </div>
         <Board
           sizeRow={sizeBoard.row}
           sizeColumn={sizeBoard.column}
