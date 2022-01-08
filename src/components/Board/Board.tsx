@@ -30,7 +30,7 @@ export default function Board(): JSX.Element {
   const [snake, setSnake] = useState<ISnake>([]);
   const [food, setFood] = useState<IFood>(initFood);
   const [score, setScore] = useState(0);
-  const direction = useDirection(snake, stateGame);
+  const direction = useDirection(snake);
   const dispatch = useDispatch();
 
   useEffect(() => {

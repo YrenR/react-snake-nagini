@@ -1,17 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { colorFood } from "../../constants";
 import { getRandomInt } from "../../utils/tools";
 import "./cell.style.css";
 
-export default function Cell({
-  isFood,
-  isSnake,
-  isHead,
-}: {
-  isFood: boolean;
-  isSnake: boolean;
-  isHead: boolean;
-}): JSX.Element {
+function Cell({ isFood, isSnake, isHead }: { isFood: boolean; isSnake: boolean; isHead: boolean }): JSX.Element {
   const styleSnake = isSnake ? "board-cell--snake" : "";
   const styleFood = isFood ? "board-cell--food" : "";
   const styleHead = isHead ? "board-cell--head" : "";
@@ -28,3 +20,5 @@ export default function Cell({
     />
   );
 }
+
+export default memo(Cell);
