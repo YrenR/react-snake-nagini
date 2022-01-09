@@ -1,27 +1,21 @@
-import { ICoordinate, IBoard, ISnake } from ".";
+import { ICoordinate, ISnake } from ".";
 import { Direction } from "../../hook/direction.interface";
 import { getRandomInt } from "../../utils/tools";
-import { IFood } from "./board.interface";
 
-export const initFood: IFood = { column: 0, row: 0 };
+export const initFood: ICoordinate = { column: -1, row: -1 };
 
-export const initializeBoard = (sizeRow: number, sizeColumn: number): IBoard => {
-  return [...Array(sizeRow)].map((_) => Array(sizeColumn).fill(0)); // revisar, no me gusta
+export const createBoardEmpty = ({ row, column }: ICoordinate): Array<Array<number>> => {
+  return [...Array(row)].map((_) => Array(column).fill(0));
 };
 
-export const getRandomPositionEmpty = (board: IBoard, snake: ISnake): ICoordinate => {
-  const row = board.length;
-  const column = board[0].length;
-  /**
-   * TODO: revisar, el caso de que estuviera todo lleno
-   * ¿recorrerlo entero y si al menos hay un hueco, seguir? throw?
-   */
+export const getRandomPositionEmpty = (snake: ISnake, { row, column }: ICoordinate): ICoordinate => {
+  const isWin = isWinGame(snake, { row, column });
   let randomRow: number;
   let randomColumn: number;
   do {
     randomRow = getRandomInt(0, row);
     randomColumn = getRandomInt(0, column);
-  } while (snake.some((x) => x.row === randomRow && x.column === randomColumn));
+  } while (!isWin && snake.some((x) => compareToCoordinate(x, { row: randomRow, column: randomColumn })));
 
   return {
     row: randomRow,
@@ -29,7 +23,7 @@ export const getRandomPositionEmpty = (board: IBoard, snake: ISnake): ICoordinat
   };
 };
 
-export const initializeSnake = (row: number, column: number): ISnake => {
+export const initializeSnake = ({ row, column }: ICoordinate): ISnake => {
   const midCol = Math.floor(column / 2);
   const midRow = Math.floor(row / 2);
   const head: ICoordinate = { row: midRow, column: midCol };
@@ -55,7 +49,7 @@ export const nextDirection = (direction: Direction, row: number, column: number)
   }
 };
 
-export const moveSnake = (snake: ISnake, direction: Direction): ISnake => {
+export const nextMoveSnake = (snake: ISnake, direction: Direction): ISnake => {
   const { column, row } = snake[0];
   snake.unshift(nextDirection(direction, row, column));
   snake.pop();
@@ -64,20 +58,20 @@ export const moveSnake = (snake: ISnake, direction: Direction): ISnake => {
 
 export const eatFood = (snake: ISnake, direction: Direction): ISnake => {
   const { column, row } = snake[0];
-  snake.unshift(nextDirection(direction, row, column));
+  snake.unshift({ ...nextDirection(direction, row, column), eating: true });
   return snake;
 };
 
-export const findSnakeByRowColumn = (snake: ISnake, cellRow: number, cellColumn: number): boolean => {
-  return snake.some(({ row, column }) => row === cellRow && column === cellColumn);
+export const findSnakeByCoordinate = (snake: ISnake, { row, column }: ICoordinate): boolean => {
+  return snake.some((body) => compareToCoordinate(body, { row, column }));
 };
 
-export const findFoodByRowColumn = (food: IFood, cellRow: number, cellColumn: number): boolean => {
-  return food.row === cellRow && food.column === cellColumn;
+export const findCellEatingSnakeByCoordinate = (snake: ISnake, { row, column }: ICoordinate): boolean => {
+  return snake.find((body) => compareToCoordinate(body, { row, column }))?.eating || false;
 };
 
-export const snakeCanEat = ([snakeHead]: ISnake, food: IFood): boolean => {
-  return snakeHead.column === food.column && snakeHead.row === food.row;
+export const snakeCanEat = ([snakeHead]: ISnake, food: ICoordinate): boolean => {
+  return compareToCoordinate(snakeHead, food);
 };
 
 export const isOutBoard = ([snakeHead]: ISnake, row: number, column: number): boolean => {
@@ -85,9 +79,17 @@ export const isOutBoard = ([snakeHead]: ISnake, row: number, column: number): bo
 };
 
 export const isEatSnakeBody = ([snakeHead, ...snakeBody]: ISnake): boolean => {
-  return snakeBody.some(({ row, column }) => snakeHead.row === row && snakeHead.column === column);
+  return snakeBody.some((body) => compareToCoordinate(snakeHead, body));
 };
 
-export const isAllowedMovement = (snake: ISnake, row: number, column: number): boolean => {
+export const isAllowedMovement = (snake: ISnake, { row, column }: ICoordinate): boolean => {
   return !isOutBoard(snake, row, column) && !isEatSnakeBody(snake);
+};
+
+export const compareToCoordinate = (c1: ICoordinate, c2: ICoordinate): boolean => {
+  return c1?.column === c2?.column && c1?.row === c2?.row;
+};
+
+export const isWinGame = (snake: ISnake, { row, column }: ICoordinate): boolean => {
+  return snake.length >= row * column;
 };
