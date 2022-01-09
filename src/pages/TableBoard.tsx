@@ -6,7 +6,7 @@ import { setStateGame } from "../redux/slices/settingGameSlice";
 import "./tableBoard.css";
 
 export default function TableBoard(): JSX.Element {
-  const { bestScore, stateGame } = useSelector((c: RootState) => c.settingGameSlice);
+  const { stateGame } = useSelector((c: RootState) => c.settingGameSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function TableBoard(): JSX.Element {
 
   const getMessage = (): string => {
     if (stateGame === "start") return "Start Game!";
+    else if (stateGame === "win") return "YOU WIN!";
     else return "Retry!";
   };
 
@@ -27,7 +28,6 @@ export default function TableBoard(): JSX.Element {
       <div className="section-game">
         <div className="panel">
           <div className="panel-header">
-            <span className="panel-score">🎉 Best score: {bestScore}</span>
             <button className="btn-start-game" onClick={() => handlerStateGame()}>
               {getMessage()}
             </button>
