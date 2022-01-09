@@ -1,101 +1,96 @@
 import React, { useEffect, useState } from "react";
 import {
-  initializeBoard,
   getRandomPositionEmpty,
-  IBoard,
   ISnake,
   initializeSnake,
-  moveSnake,
-  findSnakeByRowColumn,
+  nextMoveSnake,
   snakeCanEat,
   eatFood,
   initFood,
-  IFood,
-  findFoodByRowColumn,
   isAllowedMovement,
+  createBoardEmpty,
+  isWinGame,
+  ICoordinate,
 } from ".";
 import useInterval from "../../hook/useInterval";
-import Cell from "../Cell/Cell";
-import "./board.style.css";
 import useDirection from "../../hook/useDirection";
+import Cell from "../Cell/Cell";
 import { useDispatch, useSelector } from "react-redux";
 import { setScoreGame, setStateGame } from "../../redux/slices/settingGameSlice";
 import { delayBoard, scorePoints, sizeBoard } from "../../constants";
 import { RootState } from "../../redux/store";
+import { isEmpty } from "../../utils/tools";
+import "./board.style.css";
 
 export default function Board(): JSX.Element {
-  const { row, column } = sizeBoard;
   const { stateGame } = useSelector((c: RootState) => c.settingGameSlice);
-  const [board, setBoard] = useState<IBoard>([]);
   const [snake, setSnake] = useState<ISnake>([]);
-  const [food, setFood] = useState<IFood>(initFood);
+  const [food, setFood] = useState<ICoordinate>(initFood);
   const [score, setScore] = useState(0);
-  const direction = useDirection(snake);
+  const [direction, setDirection] = useDirection(snake);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (stateGame === "play") initializeGame();
+    initializeGame();
   }, [stateGame]);
 
   useInterval(() => {
+    if (stateGame !== "play" || isEmpty(snake)) return;
+
+    if (isWinGame(snake, sizeBoard)) {
+      dispatch(setStateGame("win"));
+      dispatch(setScoreGame(score));
+    } else {
+      const nextMove = snakeCanEat(snake, food) ? eatingSnake() : nextMoveSnake([...snake], direction);
+      movingSnake(nextMove);
+    }
+  }, delayBoard);
+
+  const initializeGame = (): void => {
     if (stateGame !== "play") return;
 
-    let nextMove: ISnake;
-    if (snakeCanEat(snake, food)) {
-      nextMove = eatFood([...snake], direction);
-      const cellEmpty = getRandomPositionEmpty(board, nextMove);
-      setFood(cellEmpty);
-      setScore((prev) => prev + scorePoints.eatFood);
-    } else {
-      nextMove = moveSnake([...snake], direction);
-      setScore((prev) => prev + scorePoints.move);
-    }
+    const newSnake = initializeSnake(sizeBoard);
+    const cellEmpty = getRandomPositionEmpty(newSnake, sizeBoard);
 
-    if (isAllowedMovement(nextMove, row, column)) {
+    setSnake(newSnake);
+    setFood(cellEmpty);
+    setDirection("left");
+    setScore(0);
+  };
+
+  const movingSnake = (nextMove: ISnake): void => {
+    if (isAllowedMovement(nextMove, sizeBoard)) {
       setSnake(nextMove);
     } else {
       dispatch(setStateGame("gameOver"));
       dispatch(setScoreGame(score));
     }
-  }, delayBoard);
-
-  const initializeGame = () => {
-    const newSnake = initializeSnake(row, column);
-    const newBoard = initializeBoard(row, column);
-    const cellEmpty = getRandomPositionEmpty(newBoard, newSnake);
-
-    setSnake(newSnake);
-    setFood(cellEmpty);
-    setBoard(newBoard);
-    setScore(0);
   };
 
-  const createBoard = () => {
-    return board.map((rowCells, rowIndex) => (
-      <div key={`row-${rowIndex}`} className="board-row">
-        {rowCells.map((_, columnIndex) => {
-          const isSnake = findSnakeByRowColumn(snake, rowIndex, columnIndex);
-          const isFood = findFoodByRowColumn(food, rowIndex, columnIndex);
-          const isHead = findFoodByRowColumn(snake[0], rowIndex, columnIndex);
-          return <Cell key={`cell-${columnIndex}`} isFood={isFood} isSnake={isSnake} isHead={isHead} />;
-        })}
+  const eatingSnake = (): ISnake => {
+    const nextMove = eatFood([...snake], direction);
+    const cellEmpty = getRandomPositionEmpty(nextMove, sizeBoard);
+    setFood(cellEmpty);
+    setScore((prev) => prev + scorePoints.eatFood);
+    return nextMove;
+  };
+
+  const createBoard = (): JSX.Element[] => {
+    const board = createBoardEmpty(sizeBoard);
+    return board.map((rowCells, row) => (
+      <div key={`row-${row}`} className="board-row">
+        {rowCells.map((_, column) => (
+          <Cell key={`cell-${column}`} snake={snake} food={food} coordinate={{ row, column }} />
+        ))}
       </div>
     ));
-  };
-
-  const styleSizeBoard = () => {
-    const width = column * 10 + column + 2;
-    const height = row * 10 + row + 2;
-    return { width, height };
   };
 
   const styleGameOver = stateGame === "gameOver" ? "board-table-game-over" : "";
 
   return (
     <>
-      <div className={`board-table ${styleGameOver}`} style={styleSizeBoard()}>
-        {createBoard()}
-      </div>
+      <div className={`board-table ${styleGameOver}`}>{createBoard()}</div>
       <span className="board-current-score">Current score: {score}</span>
     </>
   );
