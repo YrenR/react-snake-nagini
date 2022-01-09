@@ -8,7 +8,8 @@
 
 <h1>About Nagini</h1>
 
-_Este proyecto está creado por diversión y compartido al mundo. Sientete libre de hacer fork, clonar o lo que desees. Si encuentras fallo o posibles mejoras te agradecería enormemente que me ilustraras y así poder mejorar._
+_This project is created for fun and shared to the world. Feel free to fork, clone or whatever you want. If you find bugs or possible improvements I would appreciate if you tell me so I can learn._
+_Thanks!_
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/YrenR/react-snake-nagini/feature/002-create-readme.md/public/laptop.png">
@@ -20,108 +21,47 @@ _Este proyecto está creado por diversión y compartido al mundo. Sientete libre
 
 <h1>🚀 Getting Started</h1>
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_These instructions will allow you to get a working copy of the project on your local machine for development and testing._
 
-### Pre-requisitos 📋
+<h2>📋 Before begin</h2>
 
-<p>Para poder usar el proyecto debería saber algunos conceptos básicos como: <a href="https://es.reactjs.org/">React</a>, <a href="https://www.typescriptlang.org/">Typescript</a>, <a href="https://es.redux.js.org/">Redux</a> y <a href="https://jestjs.io/es-ES/">Jest</a>.</p>
+<p>You should know some basic concepts such as: <a href="https://es.reactjs.org/">React</a>, <a href="https://www.typescriptlang.org/">Typescript</a>, <a href="https://es.redux.js.org/">Redux</a> y <a href="https://jestjs.io/es-ES/">Jest</a>.</p>
 
-<p>Es necesario tener instalado Node</p>
+<p>It is necessary to have Node.</p>
+
+<h2>🔧 Quick Install</h2>
+
+_Clone and install._
 
 ```
 git clone https://github.com/YrenR/react-snake-nagini.git
 ```
 
-### Instalación 🔧
-
-_Es necesario bajar todas las dependencia del proyecto, que en este caso apenas hay._
-
 ```
-npm install
+cd react-snake-nagini
 ```
 
-o bien,
-
 ```
-yarn install
+npm i
 ```
 
-_Para iniciar el proyecto debe escribir_
+_Run project_
 
 ```
-npm run build
+npm run start
 ```
 
-o bien,
+_Go to localhost:3000 to view the app._
+
+<h2>⚙️ Testing</h2>
+
+_Launches the test runner in the interactive watch mode._
+_See the section about running tests for more information._
 
 ```
-yarn start
+npm run test
 ```
 
-## Ejecutando las pruebas ⚙️
+<h1>📄 License</h1>
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-- [Maven](https://maven.apache.org/) - Manejador de dependencias
-- [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-- **Andrés Villanueva** - _Trabajo Inicial_ - [villanuevand](https://github.com/villanuevand)
-- **Fulanito Detal** - _Documentación_ - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto.
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-- Comenta a otros sobre este proyecto 📢
-- Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
-- Da las gracias públicamente 🤓.
-- etc.
-
----
-
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+The MIT [LICENSE](LICENSE.md) (MIT)
