@@ -1,48 +1,62 @@
 <p align="center">
   <img src="https://yrenr.github.io/react-snake-nagini/react-snake-nagini-192.png">
-  <font size="6">**react-snake-nagini**</font>
-  [View Demo](https://yrenr.github.io/react-snake-nagini/ "View Demo") · [Report Bug](https://github.com/YrenR/react-snake-nagini/issues "Report Bug")
 </p>
+<p align="center">
+  <strong>react-snake-nagini</strong
+</p>
+<p align="center"><a href="https://yrenr.github.io/react-snake-nagini/">View Demo</a> · <a href="https://github.com/YrenR/react-snake-nagini/issues">Report Bug</a></p>
 
-<font size="5"> **About Naginit** </font>
-
----
+<h1>About Nagini</h1>
 
 _Este proyecto está creado por diversión y compartido al mundo. Sientete libre de hacer fork, clonar o lo que desees. Si encuentras fallo o posibles mejoras te agradecería enormemente que me ilustraras y así poder mejorar._
 
-<font size="5">🚀 **Comenzando** </font>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/YrenR/react-snake-nagini/feature/002-create-readme.md/public/laptop.png">
+</p>
 
----
+<p align="center">
+  <img src="https://raw.githubusercontent.com/YrenR/react-snake-nagini/feature/002-create-readme.md/public/mobile.png">
+</p>
+
+<h1>🚀 Getting Started</h1>
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-Mira **Deployment** para conocer como desplegar el proyecto.
-
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+<p>Para poder usar el proyecto debería saber algunos conceptos básicos como: <a href="https://es.reactjs.org/">React</a>, <a href="https://www.typescriptlang.org/">Typescript</a>, <a href="https://es.redux.js.org/">Redux</a> y <a href="https://jestjs.io/es-ES/">Jest</a>.</p>
+
+<p>Es necesario tener instalado Node</p>
 
 ```
-Da un ejemplo
+git clone https://github.com/YrenR/react-snake-nagini.git
 ```
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+_Es necesario bajar todas las dependencia del proyecto, que en este caso apenas hay._
 
 ```
-Da un ejemplo
+npm install
 ```
 
-_Y repite_
+o bien,
 
 ```
-hasta finalizar
+yarn install
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Para iniciar el proyecto debe escribir_
+
+```
+npm run build
+```
+
+o bien,
+
+```
+yarn start
+```
 
 ## Ejecutando las pruebas ⚙️
 
