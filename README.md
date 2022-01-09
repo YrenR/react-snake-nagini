@@ -25,7 +25,7 @@ _These instructions will allow you to get a working copy of the project on your 
 
 <h2>📋 Before begin</h2>
 
-<p>You should know some basic concepts such as: <a href="https://es.reactjs.org/">React</a>, <a href="https://www.typescriptlang.org/">Typescript</a>, <a href="https://es.redux.js.org/">Redux</a> y <a href="https://jestjs.io/es-ES/">Jest</a>.</p>
+<p>You should know some basic concepts such as: <a href="https://es.reactjs.org/">React</a>, <a href="https://www.typescriptlang.org/">Typescript</a>, <a href="https://es.redux.js.org/">Redux</a> and <a href="https://jestjs.io/es-ES/">Jest</a>.</p>
 
 <p>It is necessary to have Node.</p>
 
