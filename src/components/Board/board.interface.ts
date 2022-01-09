@@ -1,7 +1,8 @@
-export type IBoard = Array<Array<number>>;
-export type ISnake = Array<ICoordinate>;
-export type IFood = ICoordinate;
+export type ISnake = Array<Snake>;
 
+interface Snake extends ICoordinate {
+  eating?: boolean;
+}
 export interface ICoordinate {
   row: number;
   column: number;

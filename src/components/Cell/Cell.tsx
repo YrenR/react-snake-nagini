@@ -1,24 +1,14 @@
-import React, { memo } from "react";
-import { colorFood } from "../../constants";
-import { getRandomInt } from "../../utils/tools";
+import React from "react";
 import "./cell.style.css";
+import { ISnake, ICoordinate } from "../Board/board.interface";
+import { compareToCoordinate, findCellEatingSnakeByCoordinate, findSnakeByCoordinate } from "../Board";
 
-function Cell({ isFood, isSnake, isHead }: { isFood: boolean; isSnake: boolean; isHead: boolean }): JSX.Element {
-  const styleSnake = isSnake ? "board-cell--snake" : "";
-  const styleFood = isFood ? "board-cell--food" : "";
-  const styleHead = isHead ? "board-cell--head" : "";
-
-  const getRandomFoodColor = () => {
-    const random = getRandomInt(0, colorFood.length);
-    if (isFood) return colorFood[random];
-  };
-
-  return (
-    <div
-      className={`board-cell ${styleSnake} ${styleFood} ${styleHead}`}
-      style={{ backgroundColor: getRandomFoodColor() }}
-    />
-  );
+function Cell({ snake, food, coordinate }: { snake: ISnake; food: ICoordinate; coordinate: ICoordinate }): JSX.Element {
+  const styleSnake = findSnakeByCoordinate(snake, coordinate) ? "board-cell--snake" : "";
+  const styleFood = compareToCoordinate(food, coordinate) ? "board-cell--food" : "";
+  const styleHead = compareToCoordinate(snake[0], coordinate) ? "board-cell--head" : "";
+  const styleEating = findCellEatingSnakeByCoordinate(snake, coordinate) ? "board-cell--eating" : "";
+  return <div className={`board-cell ${styleSnake} ${styleFood} ${styleHead} ${styleEating}`} />;
 }
 
-export default memo(Cell);
+export default Cell;
