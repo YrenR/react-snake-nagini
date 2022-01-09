@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Direction } from "./direction.interface";
 import { ISnake } from "../components/Board/board.interface";
-import { RootState } from "../redux/store";
-import { useSelector } from "react-redux";
 
-export default function useDirection(snake: ISnake): Direction {
-  const { stateGame } = useSelector((c: RootState) => c.settingGameSlice);
+export default function useDirection(snake: ISnake): [Direction, (dir: Direction) => void] {
   const [currentDirection, setCurrentDirection] = useState<Direction>("left");
-
-  useEffect(() => {
-    setCurrentDirection("left");
-  }, [stateGame]);
 
   useEffect(() => {
     window.addEventListener("keydown", keyDownHandler);
@@ -49,5 +42,5 @@ export default function useDirection(snake: ISnake): Direction {
         break;
     }
   };
-  return currentDirection;
+  return [currentDirection, setCurrentDirection];
 }
