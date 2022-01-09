@@ -1,19 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-image: linear-gradient(to bottom right, #607bcd, #9efbdc);
+  height: 100vh;
+  min-height: 550px;
 }
 
 .main-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #e0feff;
 }
 
 .section-game {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 5rem;
 }
 
 .panel {
@@ -27,7 +32,6 @@ body {
 }
 
 .panel span.panel-score {
-  font-family: "Roboto", sans-serif;
   font-size: xx-large;
   color: #545454;
   margin-bottom: 1rem;
@@ -44,4 +48,5 @@ body {
   -webkit-box-shadow: 0px 10px 20px -6px rgb(0 0 0 / 12%);
   -moz-box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 10px 20px -6px rgb(0 0 0 / 12%);
+  text-transform: uppercase;
 }
