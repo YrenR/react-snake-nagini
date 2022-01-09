@@ -1,0 +1,41 @@
+.board-cell {
+  width: 10px;
+  height: 10px;
+  margin: 0.5px;
+}
+
+.board-cell--snake {
+  background-color: #8bbabb;
+  border-radius: 1px;
+}
+
+.board-cell--food {
+  border-radius: 50%;
+  animation: pulse 0.5s infinite;
+}
+
+.board-cell--head {
+  background-color: #729899;
+}
+
+.board-cell--eating {
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #fac89e;
+  }
+  25% {
+    background-color: #c2fc99;
+  }
+  50% {
+    background-color: #92e8d5;
+  }
+  75% {
+    background-color: #ada8ff;
+  }
+  100% {
+    background-color: #fea8bb;
+  }
+}

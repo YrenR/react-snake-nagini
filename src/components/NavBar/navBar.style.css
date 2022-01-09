@@ -1,0 +1,37 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  height: 50px;
+}
+.navbar-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand-img {
+  width: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    height: 70px;
+  }
+
+  .navbar-brand-img {
+    width: 52px;
+  }
+
+  .navbar-title {
+    font-size: 24px;
+  }
+
+  .score {
+    font-size: 24px;
+  }
+}

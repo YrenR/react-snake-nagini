@@ -1,0 +1,25 @@
+.board-row {
+  display: flex;
+}
+
+.board-table {
+  border: 1px solid #8bbabb;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.board-table-game-over {
+  background-image: url("../../../public/gameOver.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.board-table-game-over .board-cell {
+  opacity: 0.35;
+}
+
+span.board-current-score {
+  font-size: medium;
+  color: #ffffff;
+  margin-top: 1rem;
+}
