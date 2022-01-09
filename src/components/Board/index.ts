@@ -1,15 +1,17 @@
 export {
   initFood,
-  initializeBoard,
   getRandomPositionEmpty,
   initializeSnake,
-  moveSnake,
-  findSnakeByRowColumn,
+  nextMoveSnake,
+  findSnakeByCoordinate,
   snakeCanEat,
   eatFood,
-  findFoodByRowColumn,
   isOutBoard,
   isEatSnakeBody,
   isAllowedMovement,
+  compareToCoordinate,
+  findCellEatingSnakeByCoordinate,
+  createBoardEmpty,
+  isWinGame,
 } from "./board.tools";
-export type { ICoordinate, IBoard, ISnake, IFood } from "./board.interface";
+export type { ICoordinate, ISnake } from "./board.interface";
