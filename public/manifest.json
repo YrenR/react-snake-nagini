@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "react-snake-nagiri-192.png",
+      "src": "react-snake-nagini-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "react-snake-nagiri-512.png",
+      "src": "react-snake-nagini-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
