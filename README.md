@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="https://yrenr.github.io/react-snake-nagini/react-snake-nagini-192.png">
+</p>
+<p align="center">
+  <strong>react-snake-nagini</strong
+</p>
+<p align="center"><a href="https://yrenr.github.io/react-snake-nagini/">View Demo</a> · <a href="https://github.com/YrenR/react-snake-nagini/issues">Report Bug</a></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>About Nagini</h1>
 
-## Available Scripts
+_This project is created for fun and shared to the world. Feel free to fork, clone or whatever you want. If you find bugs or possible improvements I would appreciate if you tell me so I can learn._
+_Thanks!_
 
-In the project directory, you can run:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/YrenR/react-snake-nagini/feature/002-create-readme.md/public/laptop.png">
+</p>
 
-### `yarn start`
+<p align="center">
+  <img src="https://raw.githubusercontent.com/YrenR/react-snake-nagini/feature/002-create-readme.md/public/mobile.png">
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h1>🚀 Getting Started</h1>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+_These instructions will allow you to get a working copy of the project on your local machine for development and testing._
 
-### `yarn test`
+<h2>📋 Before begin</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>You should know some basic concepts such as: <a href="https://es.reactjs.org/">React</a>, <a href="https://www.typescriptlang.org/">Typescript</a>, <a href="https://es.redux.js.org/">Redux</a> and <a href="https://jestjs.io/es-ES/">Jest</a>.</p>
 
-### `yarn build`
+<p>It is necessary to have Node.</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>🔧 Quick Install</h2>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_Clone and install._
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/YrenR/react-snake-nagini.git
+```
 
-### `yarn eject`
+```
+cd react-snake-nagini
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm i
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_Run project_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm run start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+_Go to localhost:3000 to view the app._
 
-## Learn More
+<h2>⚙️ Testing</h2>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+_Launches the test runner in the interactive watch mode._
+_See the section about running tests for more information._
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm run test
+```
+
+<h1>📄 License</h1>
+
+The MIT [LICENSE](LICENSE.md) (MIT)
