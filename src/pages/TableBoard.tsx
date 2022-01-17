@@ -19,7 +19,8 @@ export default function TableBoard(): JSX.Element {
     if (stateGame === "play") dispatch(setStateGame("gameOver"));
   }, [sizeBaord]);
 
-  const handlerStateGame = () => {
+  const handlerStateGame = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     dispatch(setStateGame("play"));
   };
 
@@ -34,7 +35,7 @@ export default function TableBoard(): JSX.Element {
       <div className="section-game">
         <div className="panel">
           <div className="panel-header">
-            <button className="btn-start-game" onClick={() => handlerStateGame()}>
+            <button className="btn-start-game" onClick={handlerStateGame}>
               {getMessage()}
             </button>
           </div>
