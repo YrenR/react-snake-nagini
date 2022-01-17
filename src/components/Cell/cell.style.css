@@ -1,7 +1,15 @@
 .board-cell {
-  width: 10px;
-  height: 10px;
+  width: 25px;
+  height: 25px;
   margin: 0.5px;
+}
+
+@media screen and (min-width: 768px) {
+  .board-cell {
+    width: 15px;
+    height: 15px;
+    margin: 0.5px;
+  }
 }
 
 .board-cell--snake {
@@ -9,7 +17,7 @@
   border-radius: 1px;
 }
 
-.board-cell--food {
+.board-cell--food:not(.board-cell--head) {
   border-radius: 50%;
   animation: pulse 0.5s infinite;
 }

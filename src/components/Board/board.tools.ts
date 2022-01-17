@@ -93,3 +93,21 @@ export const compareToCoordinate = (c1: ICoordinate, c2: ICoordinate): boolean =
 export const isWinGame = (snake: ISnake, { row, column }: ICoordinate): boolean => {
   return snake.length >= row * column;
 };
+
+export const swipControl = (
+  setDir: (dir: Direction) => void,
+): {
+  onSwipedLeft: () => void;
+  onSwipedUp: () => void;
+  onSwipedRight: () => void;
+  onSwipedDown: () => void;
+  preventDefaultTouchmoveEvent: boolean;
+  trackMouse: boolean;
+} => ({
+  onSwipedLeft: () => setDir("left"),
+  onSwipedUp: () => setDir("up"),
+  onSwipedRight: () => setDir("right"),
+  onSwipedDown: () => setDir("down"),
+  preventDefaultTouchmoveEvent: true,
+  trackMouse: true,
+});

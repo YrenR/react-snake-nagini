@@ -14,10 +14,10 @@ export default function useDirection(snake: ISnake): [Direction, (dir: Direction
 
   const isRestrictedDirections = (key: string): boolean => {
     return (
-      (key === "ArrowLeft" && currentDirection === "right") ||
-      (key === "ArrowUp" && currentDirection === "down") ||
-      (key === "ArrowRight" && currentDirection === "left") ||
-      (key === "ArrowDown" && currentDirection === "up")
+      ((key === "ArrowLeft" || key === "left") && currentDirection === "right") ||
+      ((key === "ArrowUp" || key === "up") && currentDirection === "down") ||
+      ((key === "ArrowRight" || key === "right") && currentDirection === "left") ||
+      ((key === "ArrowDown" || key === "down") && currentDirection === "up")
     );
   };
 
@@ -42,5 +42,10 @@ export default function useDirection(snake: ISnake): [Direction, (dir: Direction
         break;
     }
   };
-  return [currentDirection, setCurrentDirection];
+
+  const setDirection = (dir: Direction) => {
+    if (!isRestrictedDirections(dir)) setCurrentDirection(dir);
+  };
+
+  return [currentDirection, setDirection];
 }
