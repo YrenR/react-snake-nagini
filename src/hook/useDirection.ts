@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Direction } from "./direction.interface";
 import { ISnake } from "../components/Board/board.interface";
+import { StateGame } from "../redux/slices/settingGame.interface";
 
-export default function useDirection(snake: ISnake): [Direction, (dir: Direction) => void] {
+export default function useDirection(snake: ISnake, stateGame: StateGame): [Direction, (dir: Direction) => void] {
   const [currentDirection, setCurrentDirection] = useState<Direction>("left");
 
   useEffect(() => {
@@ -11,6 +12,10 @@ export default function useDirection(snake: ISnake): [Direction, (dir: Direction
       window.removeEventListener("keydown", keyDownHandler);
     };
   }, [snake]);
+
+  useEffect(() => {
+    setCurrentDirection("left");
+  }, [stateGame]);
 
   const isRestrictedDirections = (key: string): boolean => {
     return (
