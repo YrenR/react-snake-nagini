@@ -4,14 +4,20 @@ import { RootState } from "../redux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { setStateGame } from "../redux/slices/settingGameSlice";
 import "./tableBoard.css";
+import useResizeBoard from "../hook/useResizeBoard";
 
 export default function TableBoard(): JSX.Element {
   const { stateGame } = useSelector((c: RootState) => c.settingGameSlice);
+  const sizeBaord = useResizeBoard();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setStateGame("start"));
   }, []);
+
+  useEffect(() => {
+    if (stateGame === "play") dispatch(setStateGame("gameOver"));
+  }, [sizeBaord]);
 
   const handlerStateGame = () => {
     dispatch(setStateGame("play"));
@@ -33,7 +39,7 @@ export default function TableBoard(): JSX.Element {
             </button>
           </div>
         </div>
-        <Board />
+        <Board sizeBoard={sizeBaord} />
       </div>
     </div>
   );
