@@ -8,7 +8,7 @@ function Cell({ snake, food, coordinate }: { snake: ISnake; food: ICoordinate; c
   const styleFood = compareToCoordinate(food, coordinate) ? "board-cell--food" : "";
   const styleHead = compareToCoordinate(snake[0], coordinate) ? "board-cell--head" : "";
   const styleEating = findCellEatingSnakeByCoordinate(snake, coordinate) ? "board-cell--eating" : "";
-  return <div className={`board-cell ${styleSnake} ${styleFood} ${styleHead} ${styleEating}`} />;
+  return <div className={`board-cell ${styleSnake} ${styleFood} ${styleEating} ${styleHead}`} />;
 }
 
-export default Cell;
+export default React.memo(Cell);
