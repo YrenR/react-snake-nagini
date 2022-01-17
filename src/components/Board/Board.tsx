@@ -29,9 +29,9 @@ export default function Board({ sizeBoard }: { sizeBoard: ICoordinate }): JSX.El
   const [snake, setSnake] = useState<ISnake>([]);
   const [food, setFood] = useState<ICoordinate>(initFood);
   const [score, setScore] = useState(0);
-  const [direction, setDirection] = useDirection(snake);
-  const dispatch = useDispatch();
+  const [direction, setDirection] = useDirection(snake, stateGame);
   const swipeable = useSwipeable(swipControl(setDirection));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     initializeGame();
@@ -57,7 +57,6 @@ export default function Board({ sizeBoard }: { sizeBoard: ICoordinate }): JSX.El
 
     setSnake(newSnake);
     setFood(cellEmpty);
-    setDirection("left");
     setScore(0);
   };
 
