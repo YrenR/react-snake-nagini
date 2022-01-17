@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-snake-nagini/static/css/main.ac43e73e.css",
-    "main.js": "/react-snake-nagini/static/js/main.67ab52a1.js",
+    "main.js": "/react-snake-nagini/static/js/main.0563bd4d.js",
     "static/media/gameOver.png": "/react-snake-nagini/static/media/gameOver.01c767aded3cea8153fa.png",
     "index.html": "/react-snake-nagini/index.html",
     "main.ac43e73e.css.map": "/react-snake-nagini/static/css/main.ac43e73e.css.map",
-    "main.67ab52a1.js.map": "/react-snake-nagini/static/js/main.67ab52a1.js.map"
+    "main.0563bd4d.js.map": "/react-snake-nagini/static/js/main.0563bd4d.js.map"
   },
   "entrypoints": [
     "static/css/main.ac43e73e.css",
-    "static/js/main.67ab52a1.js"
+    "static/js/main.0563bd4d.js"
   ]
 }
