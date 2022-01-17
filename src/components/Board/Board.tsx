@@ -11,28 +11,31 @@ import {
   createBoardEmpty,
   isWinGame,
   ICoordinate,
+  swipControl,
 } from ".";
 import useInterval from "../../hook/useInterval";
 import useDirection from "../../hook/useDirection";
 import Cell from "../Cell/Cell";
 import { useDispatch, useSelector } from "react-redux";
 import { setScoreGame, setStateGame } from "../../redux/slices/settingGameSlice";
-import { delayBoard, scorePoints, sizeBoard } from "../../constants";
+import { delayBoard, scorePoints } from "../../constants";
 import { RootState } from "../../redux/store";
 import { isEmpty } from "../../utils/tools";
+import { useSwipeable } from "react-swipeable";
 import "./board.style.css";
 
-export default function Board(): JSX.Element {
+export default function Board({ sizeBoard }: { sizeBoard: ICoordinate }): JSX.Element {
   const { stateGame } = useSelector((c: RootState) => c.settingGameSlice);
   const [snake, setSnake] = useState<ISnake>([]);
   const [food, setFood] = useState<ICoordinate>(initFood);
   const [score, setScore] = useState(0);
   const [direction, setDirection] = useDirection(snake);
   const dispatch = useDispatch();
+  const swipeable = useSwipeable(swipControl(setDirection));
 
   useEffect(() => {
     initializeGame();
-  }, [stateGame]);
+  }, [stateGame, sizeBoard]);
 
   useInterval(() => {
     if (stateGame !== "play" || isEmpty(snake)) return;
@@ -90,7 +93,9 @@ export default function Board(): JSX.Element {
 
   return (
     <>
-      <div className={`board-table ${styleGameOver}`}>{createBoard()}</div>
+      <div {...swipeable} className={`board-table ${styleGameOver}`}>
+        {createBoard()}
+      </div>
       <span className="board-current-score">Current score: {score}</span>
     </>
   );
